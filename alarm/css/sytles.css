@@ -1,0 +1,118 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+    font-size: 64px;
+}
+
+input{
+    font-size: 100%;
+}
+
+p{
+    font-size: 100%;
+    width: 100%;
+    text-align: center;
+    color: black;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    font-size: 100%;
+}
+
+/* ALARMA */
+.clock{
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(6,1fr);
+}
+
+.time_num{
+    display: inline-block;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    border: none;
+    color: #85cde5;
+    background-color: transparent;
+}
+
+/* BOTONES */
+button {
+    display: inline-block;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    margin: 0;
+    text-decoration: none;
+    background: rgb(108, 163, 182);
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.buttons{
+    margin-top: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+button:hover{
+    background: rgb(81, 131, 148);
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+
+/* Responsive Tablet */
+@media (min-width: 700px) and (max-width: 1200px){
+    .container{
+        width: 60%;
+        font-size: 78.125%;
+    }
+}
+
+/* Responsive Mobile */
+@media (max-width: 700px){
+    .container{
+        width: 75%;
+        font-size: 50%;
+    }
+    
+}

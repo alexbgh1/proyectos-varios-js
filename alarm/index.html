@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/sytles.css">
+    <link rel="shortcut icon" href="/img/icon_alarm.png">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'/>
+    <title>Alarm</title>
+</head>
+<body>
+    <div class="container">
+        <div class="clock">
+            <input id="hours" class="time_num" type="tel" onkeypress='validate(event)' onkeyup='validate(event)' maxlength="2" value ="00"/>
+            <span>hs</span>
+            <input id="minutes" class="time_num" type="tel" onkeypress='validate(event)' onkeyup='validate(event)' maxlength="2" value ="00"/>
+            <span>min</span>
+            <input id="seconds" class="time_num" type="tel" onkeypress='validate(event)' onkeyup='validate(event)' maxlength="2" value ="00"/>
+            <span>seg</span>
+        </div>
+        <div class="buttons">
+            <button id="startAlarm" class="hidden" onclick="startAlarm()">Iniciar</button>
+            <button id="stopAlarm" class="hidden" onclick="stopAlarm()">Pausar</button>
+
+        </div>
+    </div>
+    <script src="js/alarm.js"></script>
+</body>
+</html>
