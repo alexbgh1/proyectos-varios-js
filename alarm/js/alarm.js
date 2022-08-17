@@ -59,9 +59,9 @@ window.addEventListener('load',() =>{
     /*
     - - - - - VALIDATE & LOAD LOCAL STORAGE
     */
-   
-    // SI EXISTE Local Storage, carga los datos
-    if (typeof(Storage) !== "undefined") {
+
+    // SI EXISTE Local Storage Y tiene al menos un dato carga los datos
+    if (typeof(window.localStorage) !== "undefined" && window.localStorage.length) {
         // VARIABLES HTML
         hoursElem.value = localStorage.getItem("hours");
         minutesElem.value = localStorage.getItem("minutes");
@@ -74,13 +74,11 @@ window.addEventListener('load',() =>{
 
         // NOTA: La respuesta de Local Storage entrega un STRING, por eso lo parseamos : "false":string -> false:bool
         ejecutando = JSON.parse(localStorage.getItem("ejecutando"));
-
         if (ejecutando){
             // Le pasamos el parametro true, en este caso implicaría que está siendo ejecutado dentro del Local storage
             startAlarm(true);
         };
-    }
-    // SI NO EXISTE Local Storage, inicializa en 0
+    }// SI NO EXISTE Local Storage, inicializa en 0
     else{
         hours = 0;
         minutes = 0;
@@ -90,6 +88,7 @@ window.addEventListener('load',() =>{
         secondsElem.value = "00";
 
         ejecutando=false;
+        console.log("f")
     }
 
     // Ternario para ocultar un botón Inicio o Pause según si está ejecutándose la alarma.
@@ -152,13 +151,25 @@ function validate(evt){
 */
 function startAlarm(key=false){
     if (!ejecutando || key){
+        if (hours === null){
+            hours=0;
+        }
+        localStorage.setItem("hours",hours);
+        if (minutes === null){
+            minutes=0;
+        }
+        localStorage.setItem("minutes",minutes);
+        if (seconds === null){
+            seconds=0;
+        }
+        localStorage.setItem("seconds",seconds);
         setAlarm();
         regresiveCounter();
     }else{
         return
     }
-    
 }
+
 
 /*
 - - - - - regresiveCounter: hace llamado a la alarma -> va descontando el tiempo
