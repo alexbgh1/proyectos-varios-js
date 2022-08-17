@@ -40,7 +40,6 @@ window.addEventListener('load',() =>{
     stopButton.addEventListener('click', () =>{
         startButton.classList.toggle('hidden');
         stopButton.classList.toggle('hidden');
-        alarm.muted = true;
         alarm.pause();
         alarm.currentTime = 0;
     })
