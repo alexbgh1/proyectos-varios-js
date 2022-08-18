@@ -1,0 +1,117 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-family: 'Lato';
+    font-size: 32px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    width: 100%;
+}
+
+.box-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: red;
+    width: 52rem;
+    height: 20rem;
+}
+
+.inside-box{
+    color: orange;
+    margin: 5%;
+}
+
+/* Password OUTPUT and Clipb*/
+.show-output{
+    position: relative;
+    margin: 15px 0 0;
+    padding: 15px 15px;
+    background-color: #fff;
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #ddd;
+    z-index: 2;
+}
+
+.input-group{
+    background-color: rgb(174, 223, 168);
+    display: table;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+.input-group input{
+    display: table-cell;
+    position: relative;
+    width: 100%;
+    outline: none;
+}
+
+.input-group-btn{
+    width: 1%;
+
+    vertical-align: middle;
+}
+#gen-pass{
+    width: 95%;
+    height: 40px;
+    background-color: transparent;
+    position: relative;
+    font-size: 1.2rem;
+    padding: 0.9rem 1rem;
+    border: none;
+}
+
+.btn{
+    background-color: transparent;
+    border: none;
+}
+
+.clipb{
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+
+
+/* Responsive Mobile */
+@media (max-width: 500px){
+    .box-container{
+        width: 90%;
+        background-color: aqua;
+    }
+    #gen-pass{
+        width: 85%;
+    }
+}
+/* Responsive Tablet */
+
+@media (min-width: 500px) and (max-width: 1000px){
+    .box-container{
+        width: 88%;
+        background-color: blue;
+    }
+    #gen-pass{
+        width: 91%;
+    }
+}
