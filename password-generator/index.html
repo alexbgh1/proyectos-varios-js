@@ -13,15 +13,20 @@
     <div class="container">
         <div class="box-container">
             <div class="inside-box">
+
                 <div class="show-output">
                     <div class="input-group">
-                        <input id="gen-pass" placeholder="password" type="text"/>
-                        <span class="input-group-btn">
-                            <button class="btn" type="button">
+                        <input id="gen-pass" value="passwordpassword" type="text"/>
+                        <span class="input-group-btn tooltip">
+                            <button class="btn" type="button" onclick="copyPass()" onmouseout="outMsgCopyclip()">
+                                <span id="copyclip" class="tooltiptext">Copy to clipboard</span>
                                 <img class="clipb" src="img/copy.png" width="25" alt="copy clip"/>
                             </button>
                         </span>
                     </div>
+                </div>
+                <div>
+                    length
                 </div>
                 <div>
                     numbers

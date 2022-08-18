@@ -42,6 +42,7 @@ body{
 }
 
 /* Password OUTPUT and Clipb*/
+/* Password */
 .show-output{
     position: relative;
     margin: 15px 0 0;
@@ -79,6 +80,7 @@ body{
     font-size: 1.2rem;
     padding: 0.9rem 1rem;
     border: none;
+    overflow-x: auto;
 }
 
 .btn{
@@ -92,7 +94,45 @@ body{
     top: 3px;
 }
 
-
+/* Tooltip Clip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -42px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+}
+  
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 0.9;
+}
 
 /* Responsive Mobile */
 @media (max-width: 500px){
