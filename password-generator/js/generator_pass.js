@@ -5,6 +5,7 @@ const upperLetters = "ABCDEFGHIJLKMNÑOPRQSTUVWXYZ"
 const symbols = "|@#~€¬!$%&/()=+-ºª*"
 
 /* GET ID */
+const inputW = document.getElementsByClassName('input-group');
 const inputPass = document.getElementById("gen-pass");
 const tooltip = document.getElementById("copyclip");
 const length_num = document.getElementById('length-num');
@@ -12,6 +13,9 @@ const num = document.getElementById('cb-num');
 const ll = document.getElementById('cb-ll');
 const ul = document.getElementById('cb-ul');
 const s = document.getElementById('cb-s');
+
+var addError = function() { inputW[0].classList.add('error'); };
+var removeError = function() { inputW[0].classList.remove('error'); };
 
 var checkboxes = document.querySelectorAll('.cb')
 /* Copy Clip feature */
@@ -50,11 +54,23 @@ function getInfo(){
     if (checkboxes[3].checked){posibleChar+=symbols}
     var ans = ""
     if (posibleChar === ""){
-        ans="Please check some values";
+        /* NOT CHECKED VALUES */
+        ans="please check some values";
+        inputPass.style.color = "red";
+        // inputW.style.boxshadow="box-shadow: 0 0 0.5em rgb(242, 106, 106)";
+        inputW[0].style.boxShadow = "0 0 0.1em red";
+        addError();
+        setTimeout(function() {
+            removeError();
+        }, 300);
     }else{
         for(let l = 0; l<length_num.value; l++){
             ans += posibleChar[(Math.floor(Math.random() * posibleChar.length))];
         };
+        inputW[0].style.boxShadow = null;
+        inputW[0].style.border = null;
+        inputPass.style.color = null;
     }
     inputPass.value = ans;
+
 }
