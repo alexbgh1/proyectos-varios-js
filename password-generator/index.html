@@ -12,11 +12,9 @@
 <body>
     <div class="container">
         <div class="box-container">
-            <div class="inside-box">
-
                 <div class="show-output">
                     <div class="input-group">
-                        <input id="gen-pass" value="passwordpassword" type="text"/>
+                        <input id="gen-pass" value="passwordpassword" type="text" readonly/>
                         <span class="input-group-btn tooltip">
                             <button class="btn" type="button" onclick="copyPass()" onmouseout="outMsgCopyclip()">
                                 <span id="copyclip" class="tooltiptext">Copy to clipboard</span>
@@ -25,23 +23,37 @@
                         </span>
                     </div>
                 </div>
-                <div>
-                    length
+                <div class="box-button">
+                    <button class="gen-button" onclick="getInfo()">generate</button>
                 </div>
-                <div>
-                    numbers
-                </div>
-                <div>
-                    lowletter
-                </div>
-                <div>
-                    UPLETTER
-                </div>
-                <div>
-                    symbols
+                <div class="variables-input">
+                    <div class="box-variables">
+                        <p>length</p>
+                        <div class="box-length">
+                            <button onclick="stepper(this)" id="decrement" class="dli btn-1">-</button>
+                            <input id="length-num" class="dli " type="number" min="1" max="18" value="1" readonly>
+                            <button onclick="stepper(this)" id="increment" class="dli btn-1">+</button>
+                        </div>
+                    </div>
+                    <div class="box-variables" style="flex-direction: row-reverse;">
+                        <input id="cb-num" class="cb" name="numbers" value="numbers" type="checkbox"/>
+                        <label for="#numbers">1234567890</label>
+                    </div>
+                    <div class="box-variables" style="flex-direction: row-reverse;">
+                        <input id="cb-ll" class="cb" name="lowletters" value="lowletter" type="checkbox"/>
+                        <label for="#lowletter">lowercase</label>
+                    </div>
+                    <div class="box-variables" style="flex-direction: row-reverse;">
+                        <input id="cb-ul" class="cb" name="upletter" value="upletter"  type="checkbox"/>
+                        <label for="#upletter">UPPERCASE</label>
+                    </div>
+                    <div class="box-variables" style="flex-direction: row-reverse;">
+                        <input id="cb-s" class="cb" name="symbols" value="symbols" type="checkbox"/>
+                        <label for="#symbols">|@#~€¬!$%&/()=+-ºª*</label>
+                    </div>
                 </div>
             </div>
-        </div>
+
     </div>
 
     <script src="js/generator_pass.js"></script>
