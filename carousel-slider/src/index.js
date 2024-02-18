@@ -26,8 +26,8 @@ for (let i = 0; i < Object.keys(srcImg).length; i++) {
   // 1. Create content
   const $appendHeroImage = `<img src=${srcImg[imgIndex]} alt="slider ${imgIndex}" class="hero-img absolute opacity-0 ${classNameFirstHeroImage} top-0 left-0 object-contain w-full h-full rounded-lg" />`;
 
-  const $optionButtonImg = `<button class="${classNameFirstButton}">
-        <img src="${srcImg[imgIndex]}" alt="slider" class="object-cover w-16 h-16 mx-1 rounded-lg" />
+  const $optionButtonImg = `<button class="${classNameFirstButton} mx-2">
+        <img src="${srcImg[imgIndex]}" alt="slider" class="object-cover w-16 h-16 m-1 rounded-md" />
     </button>`;
 
   // 2. Add content to div's

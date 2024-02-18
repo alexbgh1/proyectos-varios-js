@@ -22,11 +22,90 @@
   transition-delay: 0ms;
 }
 
+.selected-active {
+  backdrop-filter: blur(5px);
+}
+
+/* Creating Line effect hover selected image */
+.selected-active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #fefefe;
+  border-left: 1px solid #fefefe;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.selected-active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #fefefe;
+  border-right: 1px solid #fefefe;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.selected-active::before {
+  top: 0;
+  left: 0;
+}
+
+.selected-active::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* You can easily change the color of not selected buttons */
 .wrapper-button-img > :not(.selected-active) {
   opacity: 0.87;
+  /* filter: blur(1px); */
+  /* filter: grayscale(70%); */
+  filter: grayscale(80%) blur(0.5px);
   display: block;
-  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
   transform: scale(0.8);
+}
+
+/* Creating Line effect hover selected image */
+.wrapper-button-img > :not(.selected-active)::after,
+.wrapper-button-img > :not(.selected-active)::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  transition: width 1s, height 1s;
+}
+
+.wrapper-button-img > :not(.selected-active)::before {
+  inset: 0;
+}
+
+.wrapper-button-img > :not(.selected-active)::after {
+  right: 0;
+  bottom: 0;
+  transition: width 1s, height 1s;
+}
+
+.wrapper-button-img > :not(.selected-active):hover::before {
+  width: 50%;
+  height: 50%;
+  border-top: 1px solid #fefefe;
+  border-left: 1px solid #fefefe;
+}
+
+.wrapper-button-img > :not(.selected-active):hover::after {
+  width: 50%;
+  height: 50%;
+  border-right: 1px solid #fefefe;
+  border-bottom: 1px solid #fefefe;
+}
+
+.wrapper-button-img > :not(.selected-active):hover {
+  opacity: 1;
+  filter: grayscale(30%) blur(0px);
+  transform: scale(0.95);
 }
 
 .z-1 {
