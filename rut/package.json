@@ -1,0 +1,14 @@
+{
+  "name": "form-rut",
+  "version": "1.0.0",
+  "description": "implementation of form using chilean rut",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "build": "npx tailwindcss -i ./styles.css -o ./dist/output.css --watch"
+  },
+  "author": "alexbgh",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
