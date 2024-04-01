@@ -6,23 +6,27 @@
     <title>Form Rut</title>
     <link href="dist/output.css" rel="stylesheet" />
   </head>
-  <body class="flex items-center justify-center h-screen">
-    <main>
-      <h1 class="container text-2xl font-bold text-center text-indigo-800 text-balance">Form Rut</h1>
+  <body class="flex items-center justify-center h-screen bg-slate-50">
+    <main class="p-4 bg-white rounded-md shadow-md max-w-[250px] w-full">
+      <h1 class="container text-3xl font-bold text-center text-indigo-800 text-balance">Formulario Rut</h1>
       <form>
         <!-- RUT -->
-        <div class="container mt-4 [&>label]:focus-within:text-indigo-700">
-          <label class="block transition-all duration-300 ease-in-out text-slate-600" for="rut">Ingresa tu RUT </label>
+        <div class="mt-4 [&>label]:focus-within:text-indigo-700">
+          <label class="block mb-2 font-semibold transition-all duration-300 ease-in-out text-slate-600" for="rut"
+            >Ingresa tu RUT
+          </label>
           <input
+            required
             onpaste="return false;"
             ondrop="return false;"
             maxlength="12"
             type="text"
             id="rut"
             name="rut"
-            class="block w-full p-2 transition-all duration-150 ease-in-out border rounded-md outline-none border-slate-300 focus:border-indigo-700 focus:shadow-sm"
+            class="block w-full p-2 transition-all duration-150 ease-in-out border rounded-md outline-none border-slate-300 focus:shadow-sm"
             placeholder="Ej: 12.345.678-K"
           />
+          <span class="block mt-2 text-xs text-red-500" id="rut-error"></span>
         </div>
         <!-- Password -->
       </form>

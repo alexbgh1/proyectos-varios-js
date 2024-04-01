@@ -8,7 +8,7 @@
   },
   "author": "alexbgh",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "tailwindcss": "^3.4.3"
   }
 }

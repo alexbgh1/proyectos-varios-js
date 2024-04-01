@@ -1,8 +1,11 @@
 import { formattedValue, rutWithoutSymbols, rutIsValid } from "./utils/formatRut.js";
+import { STATE } from "./constants/state.js";
+import handleErrorField from "./utils/handleErrorField.js";
 //!rut: 12.345.678-k
 //!rutValue: 12345678k
 
-const $rutField = document.querySelector("#rut");
+const $rutField = document.getElementById("rut");
+const $rutFieldError = document.getElementById("rut-error");
 
 $rutField.addEventListener("input", (event) => {
   //? For every input event, format the value
@@ -13,7 +16,13 @@ $rutField.addEventListener("input", (event) => {
     event.target.value = rutValue.substring(0, 9);
     return;
   }
+
   event.target.value = formattedValue(rut);
+  if (rutValue.length < 9 || !rutIsValid(rutValue)) {
+    handleErrorField("Es posible que el rut proporcionado sea inválido.", STATE.ERROR, $rutField, $rutFieldError);
+    return;
+  }
+  handleErrorField("", STATE.SUCCESS, $rutField, $rutFieldError);
 });
 
 $rutField.addEventListener("focus", (event) => {
@@ -27,10 +36,12 @@ $rutField.addEventListener("blur", (event) => {
   //? Format the value when the field is blurred (lost focus)
   const rut = event.target.value;
   const rutValue = rutWithoutSymbols(rut);
-  console.log(rutValue);
-  if (!rutIsValid(rutValue)) {
-    console.log("Rut is invalid");
+  if (rutValue.length < 9 || !rutIsValid(rutValue)) {
+    handleErrorField("Es posible que el rut proporcionado sea inválido.", STATE.ERROR, $rutField, $rutFieldError);
     return;
   }
+
+  handleErrorField("", STATE.SUCCESS, $rutField, $rutFieldError);
+
   event.target.value = formattedValue(rut);
 });
