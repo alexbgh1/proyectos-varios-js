@@ -29,6 +29,33 @@
           <span class="block mt-2 text-xs text-red-500" id="rut-error"></span>
         </div>
         <!-- Password -->
+        <div class="mt-4 [&>label]:focus-within:text-indigo-700">
+          <label class="block mb-2 font-semibold transition-all duration-300 ease-in-out text-slate-600" for="password"
+            >Ingresa tu contraseña
+          </label>
+          <div class="relative">
+            <input
+              required
+              maxlength="12"
+              type="password"
+              id="password"
+              name="password"
+              class="relative block w-full p-2 transition-all duration-150 ease-in-out border rounded-md outline-none border-slate-300 focus:shadow-sm"
+              placeholder="********"
+            />
+            <!-- input: 42px height: 24px height + 2px border + 16px padding -->
+            <button
+              type="button"
+              class="absolute flex items-center justify-center w-6 h-6 right-1 top-2"
+              id="toggle-password"
+            >
+              <span class="sr-only">Mostrar u ocultar contraseña</span>
+              <img src="/public/eye-slash.svg" alt="Mostrar contraseña" class="w-4 h-3 cursor-pointer" id="eye" />
+            </button>
+          </div>
+
+          <span class="block mt-2 text-xs text-red-500" id="password-error"></span>
+        </div>
       </form>
     </main>
     <script src="src/index.js" type="module"></script>

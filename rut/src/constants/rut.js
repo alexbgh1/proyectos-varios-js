@@ -1,0 +1,4 @@
+const RUT_MIN_LENGTH = 8;
+const RUT_MAX_LENGTH = 9;
+
+export { RUT_MIN_LENGTH, RUT_MAX_LENGTH };
