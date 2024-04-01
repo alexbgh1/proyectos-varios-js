@@ -1,7 +1,7 @@
 import { STATE, colorType } from "../constants/state.js";
 
-const handleErrorField = (message = "", type = STATE.DEFAULT, $field, $errorField) => {
-  $errorField.textContent = message;
+const handleErrorField = (message = "", type = STATE.DEFAULT, $field, $errorField = null) => {
+  if ($errorField) $errorField.textContent = message;
 
   // Remove others 'border-bg-color'
   // This implementation can be avoided by using tailwind-merge plugin

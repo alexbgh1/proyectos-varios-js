@@ -9,7 +9,7 @@ const $rutField = document.getElementById("rut");
 const $rutFieldError = document.getElementById("rut-error");
 
 const $passwordField = document.getElementById("password");
-const $passwordFieldError = document.getElementById("password-error");
+const $passwordFieldRequeriments = document.getElementById("password-requeriments");
 const $togglePasswordButton = document.getElementById("toggle-password");
 
 // ----- Event listeners rutField -----
@@ -55,8 +55,54 @@ $rutField.addEventListener("blur", (event) => {
 $togglePasswordButton.addEventListener("click", (event) => {
   const type = $passwordField.type === "password" ? "text" : "password";
   $passwordField.type = type;
+
   // Get the image element inside the button
   const $eye = $togglePasswordButton.querySelector("img");
   $eye.src = type === "password" ? "/public/eye-slash.svg" : "/public/eye.svg";
   $eye.alt = type === "password" ? "Mostrar contraseña" : "Ocultar contraseña";
+});
+
+$passwordField.addEventListener("input", (event) => {
+  const password = event.target.value;
+  // Input char should be valid
+
+  const regexLength = new RegExp(`.{8,}`);
+  const regexUpperCase = new RegExp("[A-Z]");
+  const regexLowerCase = new RegExp("[a-z]");
+  const regexNumber = new RegExp("[0-9]");
+  const regexSpecialCharacter = new RegExp("[!@#$%^&*.,]");
+
+  /* Show all requeriments, if the password complies, then the color will be green for that requirement */
+  const length = regexLength.test(password);
+  const upperCase = regexUpperCase.test(password);
+  const lowerCase = regexLowerCase.test(password);
+  const number = regexNumber.test(password);
+  const specialCharacter = regexSpecialCharacter.test(password);
+
+  const requirements = [
+    { requirement: "Mínimo 8 caracteres", value: length },
+    { requirement: "Al menos una mayúscula", value: upperCase },
+    { requirement: "Al menos una minúscula", value: lowerCase },
+    { requirement: "Al menos un número", value: number },
+    { requirement: "Al menos un caracter especial", value: specialCharacter },
+  ];
+
+  const allRequirementsMet = requirements.every((requirement) => requirement.value);
+
+  // css: line-through if the requirement is met, none if not
+  $passwordFieldRequeriments.innerHTML = requirements
+    .map(
+      (requirement) =>
+        `<li class=" ${requirement.value ? "line-through text-gray-600" : ""}">${requirement.requirement}</li>`
+    )
+    .join("");
+
+  if (!allRequirementsMet) {
+    handleErrorField(null, STATE.ERROR, $passwordField, null);
+    return;
+  }
+
+  // Clean the border color & clean requirements
+  $passwordFieldRequeriments.innerHTML = "";
+  handleErrorField(null, STATE.SUCCESS, $passwordField, null);
 });
