@@ -55,7 +55,16 @@
               <img src="/public/eye-slash.svg" alt="Mostrar contraseña" class="w-4 h-3 cursor-pointer" id="eye" />
             </button>
             <!-- Injected ul li for RegEx requeriments -->
-            <ul id="password-requeriments" class="mt-2 text-xs text-gray-500 transition-all duration-300"></ul>
+            <ul
+              id="password-requeriments"
+              class="mt-2 overflow-hidden text-xs text-gray-500 transition-all duration-500 max-h-0"
+            >
+              <li data-requeriment="length"><span>Mínimo 8 caracteres</span></li>
+              <li data-requeriment="upperCase"><span>Al menos una mayúscula</span></li>
+              <li data-requeriment="lowerCase"><span>Al menos una minúscula</span></li>
+              <li data-requeriment="number"><span>Al menos un número</span></li>
+              <li data-requeriment="specialCharacter"><span>Al menos un caracter especial</span></li>
+            </ul>
           </div>
         </div>
         <!-- Submit -->

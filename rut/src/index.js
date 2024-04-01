@@ -1,4 +1,5 @@
-import { formattedValue, rutWithoutSymbols, rutIsValid } from "./utils/formatRut.js";
+import { formattedValue, rutWithoutSymbols, rutIsValid } from "./utils/rut.js";
+import { getPasswordRequirements } from "./utils/password.js";
 import handleErrorField from "./utils/handleErrorField.js";
 import { STATE } from "./constants/state.js";
 import { RUT_MAX_LENGTH, RUT_MIN_LENGTH } from "./constants/rut.js";
@@ -65,44 +66,31 @@ $togglePasswordButton.addEventListener("click", (event) => {
 $passwordField.addEventListener("input", (event) => {
   const password = event.target.value;
   // Input char should be valid
+  $passwordFieldRequeriments.classList.remove("max-h-0");
+  $passwordFieldRequeriments.classList.add("max-h-40");
 
-  const regexLength = new RegExp(`.{8,}`);
-  const regexUpperCase = new RegExp("[A-Z]");
-  const regexLowerCase = new RegExp("[a-z]");
-  const regexNumber = new RegExp("[0-9]");
-  const regexSpecialCharacter = new RegExp("[!@#$%^&*.,]");
+  const requirements = getPasswordRequirements(password);
 
-  /* Show all requeriments, if the password complies, then the color will be green for that requirement */
-  const length = regexLength.test(password);
-  const upperCase = regexUpperCase.test(password);
-  const lowerCase = regexLowerCase.test(password);
-  const number = regexNumber.test(password);
-  const specialCharacter = regexSpecialCharacter.test(password);
+  // Get only 'data-requeriment' elements
+  const requeriementsElements = $passwordFieldRequeriments.querySelectorAll("[data-requeriment]");
 
-  const requirements = [
-    { requirement: "Mínimo 8 caracteres", value: length },
-    { requirement: "Al menos una mayúscula", value: upperCase },
-    { requirement: "Al menos una minúscula", value: lowerCase },
-    { requirement: "Al menos un número", value: number },
-    { requirement: "Al menos un caracter especial", value: specialCharacter },
-  ];
+  // Iterate over 'requeriementsElements' and update the class
+  requeriementsElements.forEach((element) => {
+    const dataRequeriment = element.dataset.requeriment;
+    const span = element.querySelector("span");
+    if (!span || !requirements[dataRequeriment]) return;
 
-  const allRequirementsMet = requirements.every((requirement) => requirement.value);
+    span.classList.toggle("strike", requirements[dataRequeriment].value);
+  });
 
-  // css: line-through if the requirement is met, none if not
-  $passwordFieldRequeriments.innerHTML = requirements
-    .map(
-      (requirement) =>
-        `<li class=" ${requirement.value ? "line-through text-gray-600" : ""}">${requirement.requirement}</li>`
-    )
-    .join("");
-
+  const allRequirementsMet = Object.values(requirements).every((requirement) => requirement.value);
   if (!allRequirementsMet) {
     handleErrorField(null, STATE.ERROR, $passwordField, null);
     return;
   }
 
   // Clean the border color & clean requirements
-  $passwordFieldRequeriments.innerHTML = "";
+  $passwordFieldRequeriments.classList.remove("max-h-40");
+  $passwordFieldRequeriments.classList.add("max-h-0");
   handleErrorField(null, STATE.SUCCESS, $passwordField, null);
 });
